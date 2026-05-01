@@ -1,0 +1,4 @@
+module test-tensor-py (test)
+
+import tensor.test (test)
+import tensor-py
