@@ -30,6 +30,19 @@ source Py from "tensor.py"
     , "morloc_matmul" as matmul
     )
 
+-- Equal iff both shape and contents agree, mirroring tensor-cpp.
+instance Eq (Matrix d1 d2 a) where
+  %inline source Py from "tensor.py" ("morloc_tensor_eq" as (==))
+
+instance Eq (Tensor3 d1 d2 d3 a) where
+  %inline source Py from "tensor.py" ("morloc_tensor_eq" as (==))
+
+instance Eq (Tensor4 d1 d2 d3 d4 a) where
+  %inline source Py from "tensor.py" ("morloc_tensor_eq" as (==))
+
+instance Eq (Tensor5 d1 d2 d3 d4 d5 a) where
+  %inline source Py from "tensor.py" ("morloc_tensor_eq" as (==))
+
 instance Packable ((Int, Int), Vector (d1 * d2) a) (Matrix d1 d2 a) where
   source Py from "tensor.py"
     ( "morloc_packMatrix" as pack

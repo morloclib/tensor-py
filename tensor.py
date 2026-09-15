@@ -48,6 +48,13 @@ def morloc_matmul(a, b):
     return a @ b
 
 
+# Equal iff both shape and contents agree, mirroring tensor-cpp.
+def morloc_tensor_eq(a, b):
+    a = np.asarray(a)
+    b = np.asarray(b)
+    return a.shape == b.shape and bool(np.array_equal(a, b))
+
+
 # Packable: tuple-of(dims, flat numpy.ndarray) <-> shaped numpy.ndarray.
 # Dims are native Python ints; data is a 1D numpy array routed through the
 # morloc numpy fast path (zero-copy when contiguous).
