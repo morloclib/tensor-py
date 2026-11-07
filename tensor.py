@@ -55,6 +55,10 @@ def morloc_tensor_eq(a, b):
     return a.shape == b.shape and bool(np.array_equal(a, b))
 
 
+def morloc_tensor_ne(a, b):
+    return not morloc_tensor_eq(a, b)
+
+
 # Packable: tuple-of(dims, flat numpy.ndarray) <-> shaped numpy.ndarray.
 # Dims are native Python ints; data is a 1D numpy array routed through the
 # morloc numpy fast path (zero-copy when contiguous).
